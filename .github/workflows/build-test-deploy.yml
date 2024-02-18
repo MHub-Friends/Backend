@@ -2,7 +2,7 @@ name: build-test-deploy
 on: push
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: mhub
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -14,7 +14,7 @@ jobs:
       - run: go build
   test:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: mhub
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
       - run: go test ./...
   deploy:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: mhub
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
